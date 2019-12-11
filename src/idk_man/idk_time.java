@@ -1,5 +1,6 @@
 package idk_man;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class idk_time {
@@ -10,7 +11,7 @@ public class idk_time {
 		//Implementing stuff from previous work into one thing. A test kind of.
 
 		//A K A, battlesim bs with word s(tuff)hit.
-
+		Random rnd=new Random();
 		Scanner in=new Scanner(System.in);	
 
 		int attack = 20;
@@ -67,15 +68,18 @@ public class idk_time {
 
 		int PlayerHealth = 120; 
 		
-		int EnemyAttack = 20;
+		int EnemyAttack = (rnd.nextInt((30-10)+1)+10);
 
 		String PlayerAttack = null;
 		System.out.println("Attack with W and enter!");
 		System.out.println("Defend with space and enter.");
 
-		while (EnemyHealth>0) {
-			System.out.println("Current Enemy Health");
+		while (EnemyHealth>0&&PlayerHealth>0) {
+			System.out.println("Current Enemy Health:");
 			System.out.println(EnemyHealth);
+			System.out.println(" ");
+			System.out.println("Current Player Health:");
+			System.out.println(PlayerHealth);
 
 			//When attacks are done, it should deplete enemy health accordingly
 			PlayerAttack = in.nextLine();
@@ -85,13 +89,23 @@ public class idk_time {
 			}
 			
 			if (PlayerAttack==" ") {
-				PlayerHealth=(PlayerHealth+(EnemyAttack-((Math.random((20-5)+1)+5))));
+				PlayerHealth=(PlayerHealth+(EnemyAttack-((rnd.nextInt((20-5)+1)+5))));
 			}
+			
+			PlayerHealth=(PlayerHealth-EnemyAttack);
+		System.out.println("  ");
+		System.out.println("  ");
+			System.out.println("The enemy attacked with");
+			System.out.println(EnemyAttack);
+			System.out.println("damage!");
+			System.out.println("  ");
+			
+	
 
 
 
 
-			//Trying to make enemy attack back every turn, but with a random number of damage betwee 200-40.
+			//Trying to make enemy attack back every turn, but with a random number of damage between 200-40.
 
 			//else 
 			//PlayerHealth = PlayerHealth - (rnd.nextInt(200-40)-40);
